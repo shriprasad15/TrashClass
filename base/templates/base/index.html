@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+{% load bootstrap5 %}
+
+
+{% block content %}
+<h1>
+  Trash Classification
+</h1>
+<div class="d-flex flex-column">
+  <form action="{% url 'index' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="input-group">
+      <input name="image" type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+      <button class="btn btn-outline-secondary" type="submit" id="inputGroupFileAddon04">Button</button>
+    </div>
+  </form>
+  {% if image %}
+  <img src="{{ image }}" alt="Uploaded image">
+  {% endif %}
+</div>
+{% endblock content %}
