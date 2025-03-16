@@ -81,9 +81,11 @@ def detect(detection_graph, test_image_path):
                 category_index,
                 use_normalized_coordinates=True,
                 line_thickness=15)
-            plt.figure(figsize=(12, 8))
+            plt.figure(figsize=(12, 8), dpi=150)
             plt.imshow(npim)
-            plt.savefig('output.jpg')
+            plt.axis("off")
+            plt.savefig('output.png',format='png', bbox_inches='tight', pad_inches=0.1)
+            plt.close()
 
 
 def index(request):
@@ -97,7 +99,7 @@ def index(request):
             for chunk in image.chunks():
                 f.write(chunk)
         detect(detection_graph, 'image.jpg')
-        base64_data = convert_jpg_to_base64("output.jpg")
+        base64_data = convert_jpg_to_base64("output.png")
         data_uri = f"data:image/jpeg;base64,{base64_data}"
         return render(request, 'base/index.html', {'image': data_uri})
 
