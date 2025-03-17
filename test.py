@@ -98,5 +98,5 @@ def detect(detection_graph, test_image_path):
             # plt.show(block=True)
 
 
-detection_graph = reconstruct("ssd_mobilenet_v2_taco_2018_03_29.pb")
+detection_graph = reconstruct("ViTTrashClass.pb")
 detect(detection_graph, 'image.jpg')

@@ -92,7 +92,7 @@ def index(request):
     print(request.method)
     if request.method == 'POST':
         print(request.FILES)
-        detection_graph = reconstruct("ssd_mobilenet_v2_taco_2018_03_29.pb")
+        detection_graph = reconstruct("ViTTrashClass.pb")
         image = request.FILES['image']
         # image.save('image.jpg', image)
         with open('image.jpg', 'wb+') as f:
